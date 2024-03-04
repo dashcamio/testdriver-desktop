@@ -1,0 +1,23 @@
+name: TestDriver.ai
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "TestDriver"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dashcamio/testdriver@main
+        id: testdriver
+        with:
+          prompt: |
+            1. run 'open -a Hyper'
+            2. focus the Hyper application with Spotlight
+            3. type 'ls' into the input
+            4. press return
+            5. validate Hyper shows the result of the command 'ls'
